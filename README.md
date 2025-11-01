@@ -4,7 +4,6 @@
 # Forecasting & Predictive Analytics
 ---
 >**TL;DR**
-
 >Time-series analysis & predictive modeling. Tests whether innovation metrics predict
 >future revenue growth and highlight disruptive companies, using patent & financial data (SATCOM case study).
 ---
@@ -73,29 +72,31 @@ Fictitious company example for a 3-year rolling window (2019–2021):
 
 1. **Calculate 3-year rolling average AGR:**
 
-   \[
-   \text{AGR\_3yr\_avg} = \frac{0.15 + 0.08 + 0.12}{3} = \frac{0.35}{3} = 0.117 \quad (11.7\%)
-   \]
+$$
+\mathrm{AGR}_{\text{3yr-avg}} = \frac{0.15 + 0.08 + 0.12}{3} = \frac{0.35}{3} = 0.117 \text{= 11.7 prct.}
+$$
 
 2. **Calculate 3-year cumulative patents:**
 
-   \[
-   \text{Patents\_3yr\_sum} = 3 + 5 + 2 = 10 \quad \text{patents}
-   \]
+$$
+\mathrm{Patents}_{\text{3yr-sum}} = 3 + 5 + 2 = 10  \text{patents}
+$$
 
 3. **Calculate Tech Gap (raw):**
 
-   \[
-   \text{TechGap\_raw} = \frac{\text{AGR\_3yr\_avg}}{\text{Patents\_3yr\_sum}} = \frac{0.117}{10} = 0.0117
-   \]
+$$
+\mathrm{TechGap}_{\text{raw}} = \frac{\mathrm{AGR}_{\text{3yr-avg}}}{\mathrm{Patents}_{\text{3yr-sum}}} = \frac{0.117}{10} = 0.0117
+$$
 
-4. **Min–Max normalization over the entire sample (all companies, all rolling windows):**
-   Assumed global minimum = −0.404  
-   Assumed global maximum = 0.724
+4. **Min–Max normalization over the entire sample (all companies, all rolling windows):**  
+Assumed global minimum = −0.404  
+Assumed global maximum = 0.724
 
-   \[
-   \text{TechGap\_minmax} = \frac{0.0117 - (-0.404)}{0.724 - (-0.404)} = \frac{0.0117 + 0.404}{1.128} = \frac{0.4157}{1.128} = 0.369
-   \]
+$$
+\mathrm{TechGap}_{\text{minmax}} = \frac{0.0117 - (-0.404)}{0.724 - (-0.404)} = \frac{0.0117 + 0.404}{1.128} = \frac{0.4157}{1.128} = 0.369
+$$
+
+
 
 This Min–Max normalized Tech Gap value of 0.369 locates the company at approximately 36.9% between the worst and best observed performers, allowing fair comparison across the full portfolio.
 
@@ -147,9 +148,17 @@ cyclicality, test nonlinear relationships (neural networks, GAMs).
 
 ---
 ## Installation & Usage
-
-pip install pandas numpy scipy plotly jupyter
+```bash
+# Download repository
+git clone git@github.com:404rorre/patent-signal-analytics.git
+cd patent-signal-analytics
+# Create virtual environment 
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements
+# Open Script
 jupyter notebook technology_gap.ipynb
+```
 ---
 
 ## License
